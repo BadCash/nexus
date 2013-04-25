@@ -1,0 +1,70 @@
+html{
+	background: #3B3B3B url('../img/classy_fabric.png') left top repeat;
+}
+
+body{
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-size: 100%;
+}
+
+a{
+	color: maroon;
+	text-decoration: none;
+}
+a:hover{
+	color: red;
+}
+
+legend{
+	padding: 10px;
+}
+
+#page{
+	background: #F8F8F8 url('../img/debut_light.png') left top repeat;
+	margin: 20px auto 20px auto;
+	width: 1000px;
+	border: 1px solid black;
+	border-radius: 7px;
+	padding: 10px;
+}
+
+header{
+	padding: 10px;
+	font-family: "Times New Roman", Times, serif;
+	overflow: auto;
+}
+header #logo{
+	float: left;
+	font-size: 250%;
+	font-weight: bold;
+	color: #D8D8D8;
+	font-family: Georgia, serif;
+}
+header #menu{
+	float: right;
+	font-size: 130%;
+}
+header a{
+	margin-left: 20px;
+}
+
+div#pagecontent{
+	padding: 20px;
+}
+
+fieldset.source{
+	border: 1px solid silver;
+	border-radius: 5px;
+	padding: 10px;
+	background: white;
+	font-family: "Courier New", Courier, monospace;
+}
+
+
+
+footer{
+	margin-top: 60px;
+	color: gray;
+	font-size: 80%;
+	text-align: right;
+}
