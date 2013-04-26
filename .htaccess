@@ -556,8 +556,8 @@ FileETag None
 <IfModule mod_rewrite.c>
   RewriteEngine on
   # Must use RewriteBase on www.student.bth.se, Rewritebase for url /~mos/test is /~mos/test/
-  #RewriteBase /~mawi13/phpmvc/mom02/
-  RewriteBase /http/www/BTH/phpmvc/mom02/
+  #RewriteBase /~mawi13/phpmvc/nexus/
+  RewriteBase /http/www/BTH/phpmvc/nexus/
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule (.*) index.php/$1 [NC,L]
