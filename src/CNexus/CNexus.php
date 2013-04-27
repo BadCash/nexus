@@ -61,9 +61,11 @@
 			$arguments  = $this->request->arguments;
 
 			
+			// Remove - and _ from method name
+            $method = str_replace(array('_', '-'), '', $method);
+
 			
-			// Check if there is a callable method in the controller class, if then call it
-			
+		// Check if there is a callable method in the controller class, if then call it
 			// Is the controller enabled in config.php?
 			$controllerExists    = isset($this->config['controllers'][$controller]);
 			$controllerEnabled    = false;

@@ -10,6 +10,14 @@
     error_reporting(-1);
     ini_set('display_errors', 1);
 
+
+	/**
+	* Set what to show as debug or developer information in the get_debug() theme helper.
+	*/
+	$nx->config['debug']['display-nexus'] = true;
+
+	
+	
     /*
     * Define session name
     */

@@ -4,6 +4,18 @@
     * This file is included right before the themes own functions.php
     */
 
+	/**
+	* Print debuginformation from the framework.
+	*/
+	function get_debug() {
+	  $nx = CNexus::Instance();
+	  $html = null;
+	  if(isset($nx->config['debug']['display-nexus'])) {
+		$html = "<hr><h3>Debuginformation</h3><p>The content of CNexus:</p><pre>" . htmlent(print_r($nx, true)) . "</pre>";
+	  }
+	  return $html;
+	}	
+	
     /**
     * Create a url by prepending the base_url.
     */

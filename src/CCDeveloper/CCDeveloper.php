@@ -1,22 +1,28 @@
-<?php
+	<?php
     /**
     * Standard controller layout.
     *
     * @package NexusCore
     */
-    class CCDeveloper implements IController {
+    class CCDeveloper extends CObject implements IController {
 
+		/**
+		   * Constructor
+		   */
+		public function __construct() {
+			parent::__construct();
+		}	
+	
+	
        /**
         * Implementing interface IController. All controllers must have an index action.
         */
        public function Index() {   
-          global $nx;
-          $nx->data['title'] = "The Index method of CCMyController";
+          $this->data['title'] = "The Index method of CCMyController";
        }
 
        public function Test() {   
-          global $nx;
-          $nx->data['title'] = "The Test method of CCMyController";
+          $this->data['title'] = "The Test method of CCMyController";
        }
 
 
@@ -24,16 +30,15 @@
 		* Create a method that shows the menu, same for all methods
 		*/
 		private function Menu() {  
-			$nx = CNexus::Instance();
 			$menu = array('developer', 'developer/index', 'developer/links');
 
 			$html = null;
 			foreach($menu as $val) {
-			  $html .= "<li><a href='" . $nx->request->CreateUrl($val) . "'>$val</a>";  
+			  $html .= "<li><a href='" . $this->request->CreateUrl($val) . "'>$val</a>";  
 			}
 
-			$nx->data['title'] = "The Links method of the Developer Controller";
-			$nx->data['main'] = <<<EOD
+			$this->data['title'] = "The Links method of the Developer Controller";
+			$this->data['main'] = <<<EOD
 <h1>The Developer Controller</h1>
 <p>This is what you can do for now:</p>
 <ul>
@@ -50,23 +55,21 @@ EOD;
 	  public function Links() {  
 		$this->Menu();
 		
-		$nx = CNexus::Instance();
-		
 		$url = 'developer/links';
-		$current      = $nx->request->CreateUrl($url);
+		$current      = $this->request->CreateUrl($url);
 
-		$nx->request->cleanUrl = false;
-		$nx->request->querystringUrl = false;    
-		$default = $nx->request->CreateUrl($url);
+		$this->request->cleanUrl = false;
+		$this->request->querystringUrl = false;    
+		$default = $this->request->CreateUrl($url);
 		
-		$nx->request->cleanUrl = true;
-		$clean = $nx->request->CreateUrl($url);    
+		$this->request->cleanUrl = true;
+		$clean = $this->request->CreateUrl($url);    
 		
-		$nx->request->cleanUrl = false;
-		$nx->request->querystringUrl = true;    
-		$querystring  = $nx->request->CreateUrl($url);
+		$this->request->cleanUrl = false;
+		$this->request->querystringUrl = true;    
+		$querystring  = $this->request->CreateUrl($url);
 		
-		$nx->data['main'] .= <<<EOD
+		$this->data['main'] .= <<<EOD
 <h2>CRequest::CreateUrl()</h2>
 <p>Here is a list of urls created using above method with various settings. All links should lead to
 this same page.</p>
@@ -80,5 +83,20 @@ this same page.</p>
 EOD;
 
 		}
+		
+		
+		
+		/**
+        * Display all items of the CObject.
+        */
+       public function DisplayObject() {   
+          $this->Menu();
+          
+          $this->data['main'] .= <<<EOD
+<h2>Dumping content of CDeveloper</h2>
+<p>Here is the content of the controller, including properties from CObject which holds access to common resources in CLydia.</p>
+EOD;
+		  $this->data['main'] .= '<pre>' . htmlentities(print_r($this, true)) . '</pre>';
+       }		
 
     } 
